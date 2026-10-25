@@ -23,3 +23,13 @@ Git 2.53.0; go list -m all содержит только текущий моду
 Я собрал ZIP из 19 allowlisted файлов, распаковал в новый временный каталог
 и выполнил из него go test -count=1 и smoke собранного CLI: оба прошли.
 Состав и байты каждого ZIP member совпали с исходниками.
+
+## Первый удалённый CI и исправление Windows
+
+[CI 40223653067](https://github.com/Decl1s/go-csv-quality/actions/runs/40223653067):
+Ubuntu прошёл полностью. В Windows прошли Go tests/vet и binary smoke, но
+упаковщик упал на русском print: stdout использовал cp1252 (UnicodeEncodeError).
+Я явно переключил stdout/stderr упаковщика на UTF-8 и задал UTF-8 при чтении
+PUBLIC_FILES. Локально повторил упаковку с PYTHONIOENCODING=cp1252; исправленный
+скрипт отработал. Полный финальный результат матрицы проверяю перед релизом,
+текущий статус виден в [Actions](https://github.com/Decl1s/go-csv-quality/actions).

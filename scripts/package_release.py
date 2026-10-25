@@ -2,10 +2,15 @@
 import hashlib
 from pathlib import Path
 import re
+import sys
 import zipfile
 
+for stream in (sys.stdout, sys.stderr):
+    if hasattr(stream, 'reconfigure'):
+        stream.reconfigure(encoding='utf-8')
+
 ROOT = Path(__file__).resolve().parents[1]
-names = (ROOT / 'PUBLIC_FILES.txt').read_text().splitlines()
+names = (ROOT / 'PUBLIC_FILES.txt').read_text(encoding='utf-8').splitlines()
 if names != sorted(set(names)):
     raise SystemExit('PUBLIC_FILES должен быть уникальным и отсортированным')
 payload = {}
