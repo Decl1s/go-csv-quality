@@ -1,0 +1,9 @@
+{
+  "folders": [{"name": "Качество CSV — START_HERE.md", "path": "."}],
+  "settings": {
+    "git.openRepositoryInParentFolders": "never",
+    "editor.wordWrap": "on",
+    "workbench.startupEditor": "none",
+    "search.exclude": {"**/workspace": true, "**/artifacts": true}
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {"label": "1. Проверки Go", "type": "process", "command": "go", "args": ["test", "-v", "./..."], "options": {"env": {"GOTOOLCHAIN": "local", "GOPROXY": "off", "GOSUMDB": "off", "CGO_ENABLED": "0", "GOCACHE": "${workspaceFolder}/workspace/gocache"}}, "problemMatcher": []},
+    {"label": "2. Go vet", "type": "process", "command": "go", "args": ["vet", "./..."], "options": {"env": {"GOTOOLCHAIN": "local", "GOPROXY": "off", "GOSUMDB": "off", "CGO_ENABLED": "0", "GOCACHE": "${workspaceFolder}/workspace/gocache"}}, "problemMatcher": []},
+    {"label": "3. Собранный CLI", "type": "process", "command": "python3", "windows": {"command": "python"}, "args": ["scripts/smoke.py"], "problemMatcher": []},
+    {"label": "4. Архив исходников", "type": "process", "command": "python3", "windows": {"command": "python"}, "args": ["scripts/package_release.py"], "problemMatcher": []}
+  ]
+}

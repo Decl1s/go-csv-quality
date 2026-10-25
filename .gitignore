@@ -1,0 +1,5 @@
+/workspace/
+/artifacts/
+*.exe
+__pycache__/
+*.pyc
